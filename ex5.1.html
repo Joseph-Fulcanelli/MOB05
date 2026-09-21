@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>5.1 Componentes de uma Aplicação</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+        .hero-img { width: 100%; max-width: 600px; height: auto; border-radius: 8px; }
+        .form-group { margin-bottom: 12px; }
+    </style>
+</head>
+<body>
+    <h1>Módulo 5.1 — Componentes da Interface</h1>
+    
+    <!-- Imagem conceitual do Pexels sobre programação -->
+    <img src="https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800" 
+         alt="Desenvolvedor trabalhando em código HTML/CSS" 
+         class="hero-img">
+
+    <h2>Cadastro de Perfil Dev</h2>
+    <p>Preencha os campos abaixo para interagir com a interface.</p>
+
+    <form>
+        <div class="form-group">
+            <label for="nome">Nome Completo:</label><br>
+            <input type="text" id="nome" name="nome" placeholder="Digite seu nome">
+        </div>
+
+        <div class="form-group">
+            <label for="email">E-mail:</label><br>
+            <input type="email" id="email" name="email" placeholder="seu@email.com">
+        </div>
+
+        <div class="form-group">
+            <label for="cargo">Área de Atuação:</label><br>
+            <select id="cargo" name="cargo">
+                <option value="frontend">Desenvolvedor Front-end</option>
+                <option value="backend">Desenvolvedor Back-end</option>
+                <option value="uiux">UI/UX Designer</option>
+            </select>
+        </div>
+
+        <button type="submit">Enviar Cadastro</button>
+    </form>
+
+    <h3>Tecnologias Utilizadas:</h3>
+    <ul>
+        <li>HTML5 — Estruturação de componentes</li>
+        <li>CSS3 — Estilização visual</li>
+        <li>JavaScript — Interatividade</li>
+    </ul>
+</body>
+</html>

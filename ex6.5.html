@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>5.6 Aplicação Completa — Sistema de Pedidos</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f6f8; margin: 0; padding: 20px; }
+        .app-container {
+            max-width: 500px;
+            background: #ffffff;
+            margin: auto;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .app-banner { width: 100%; height: 180px; object-fit: cover; }
+        .app-content { padding: 20px; }
+        .form-group { margin-bottom: 15px; }
+        label { font-weight: bold; display: block; margin-bottom: 5px; }
+        input, select, button { width: 100%; padding: 10px; border-radius: 4px; border: 1px solid #ccc; box-sizing: border-box; }
+        button { background-color: #28a745; color: white; border: none; font-weight: bold; cursor: pointer; margin-top: 10px; }
+        button:hover { background-color: #218838; }
+        .erro { color: red; font-size: 14px; margin-top: 10px; }
+        .resumo { background: #e9ecef; padding: 15px; border-radius: 6px; margin-top: 15px; }
+    </style>
+</head>
+<body>
+
+<div class="app-container">
+    <!-- Imagem de topo vinda do Pexels (Workspace/Tecnologia) -->
+    <img src="https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=800" 
+         alt="Ambiente de trabalho digital" 
+         class="app-banner">
+
+    <div class="app-content">
+        <h2>🛍️ Checkout de Pedido</h2>
+
+        <div class="form-group">
+            <label for="nomeCliente">Nome do Cliente:</label>
+            <input type="text" id="nomeCliente" placeholder="Informe seu nome">
+        </div>
+
+        <div class="form-group">
+            <label for="selectProduto">Selecione o Item:</label>
+            <select id="selectProduto">
+                <option value="0">-- Selecione um curso --</option>
+                <option value="49.90">Curso de HTML5/CSS3 — R$ 49,90</option>
+                <option value="89.90">Curso de JavaScript Moderno — R$ 89,90</option>
+                <option value="149.90">Formação Web Fullstack — R$ 149,90</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="qtdInput">Quantidade:</label>
+            <input type="number" id="qtdInput" min="1" value="1">
+        </div>
+
+        <button onclick="processarPedido()">Confirmar e Finalizar</button>
+
+        <div id="msgErro" class="erro"></div>
+
+        <div id="resumoBox" class="resumo" style="display: none;">
+            <h3>Resumo da Compra</h3>
+            <p><strong>Cliente:</strong> <span id="resNome"></span></p>
+            <p><strong>Total a Pagar:</strong> R$ <span id="resValor"></span></p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function processarPedido() {
+        let nome = document.getElementById("nomeCliente").value.trim();
+        let preco = Number(document.getElementById("selectProduto").value);
+        let qtd = Number(document.getElementById("qtdInput").value);
+
+        let divErro = document.getElementById("msgErro");
+        let divResumo = document.getElementById("resumoBox");
+
+        // Validações
+        if (nome === "") {
+            divErro.textContent = "⚠️ Preencha o nome do cliente.";
+            divResumo.style.display = "none";
+            return;
+        }
+
+        if (preco === 0) {
+            divErro.textContent = "⚠️ Selecione um produto válido da lista.";
+            divResumo.style.display = "none";
+            return;
+        }
+
+        if (qtd <= 0 || isNaN(qtd)) {
+            divErro.textContent = "⚠️ Informe uma quantidade válida.";
+            divResumo.style.display = "none";
+            return;
+        }
+
+        // Sucesso
+        divErro.textContent = "";
+        let total = preco * qtd;
+
+        document.getElementById("resNome").textContent = nome;
+        document.getElementById("resValor").textContent = total.toFixed(2).replace(".", ",");
+
+        divResumo.style.display = "block";
+    }
+</script>
+
+</body>
+</html>
